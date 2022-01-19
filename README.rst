@@ -1,4 +1,4 @@
-.. image:: https://img.shields.io/github/license/mnemchinov/django-logging-eventlog   :alt: GitHub
+.. image:: https://img.shields.io/github/license/mnemchinov/django-logging-eventlog?style=flat-square   :alt: GitHub
 
 """""""""""""""""""""""
 django-logging-eventlog
@@ -9,7 +9,7 @@ Logger for the logging module that writes messages to the django database
 
 .. image:: http://www.mnemchinov.ru/images/projects/django-logging-eventlog/eventlog_events.jpg
 
-.. image:: http://www.mnemchinov.ru/images/projects/django-logging-eventlog/eventlog_exception.jpg
+.. image:: http://www.mnemchinov.ru/images/projects/django-logging-eventlog/eventlog_event_exception.jpg
 
 ------------
 Installation
