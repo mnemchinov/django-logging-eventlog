@@ -1,6 +1,7 @@
 .. image:: https://img.shields.io/github/license/mnemchinov/django-logging-eventlog?style=flat-square   :alt: GitHub
 .. image:: https://img.shields.io/github/pipenv/locked/python-version/mnemchinov/django-logging-eventlog?style=flat-square   :alt: GitHub Pipenv locked Python version
 .. image:: https://img.shields.io/github/pipenv/locked/dependency-version/mnemchinov/django-logging-eventlog/django?style=flat-square   :alt: GitHub Pipenv locked dependency version
+
 """""""""""""""""""""""
 django-logging-eventlog
 """""""""""""""""""""""
