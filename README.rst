@@ -1,3 +1,5 @@
+.. image:: https://img.shields.io/github/license/mnemchinov/django-logging-eventlog   :alt: GitHub
+
 """""""""""""""""""""""
 django-logging-eventlog
 """""""""""""""""""""""
