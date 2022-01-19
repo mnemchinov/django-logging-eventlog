@@ -4,6 +4,11 @@ django-logging-eventlog
 
 Logger for the logging module that writes messages to the django database
 
+
+.. image:: http://www.mnemchinov.ru/images/projects/django-logging-eventlog/eventlog_events.jpg
+
+.. image:: http://www.mnemchinov.ru/images/projects/django-logging-eventlog/eventlog_exception.jpg
+
 ------------
 Installation
 ------------
@@ -29,23 +34,15 @@ Installation
             'eventlog': {
                 'class': 'eventlog.services.EventLogHandler'
             },
-        },
-        'loggers': {
             'console': {
                 'class': 'logging.StreamHandler',
             },
-            'file': {
-                'class': 'logging.handlers.FileHandler',
-                'filename': 'app.log',
-            },
+        },
+        'loggers': {
             'root': {
-                'handlers': ['file', 'console', 'eventlog'],
+                'handlers': ['console', 'eventlog'],
                 'level': 'INFO',
-            },
-            'eventlog': {
-
-                'handlers': ['eventlog', ],
-                'level': 'INFO',
+                'propagate': True,
             },
         }
     }
@@ -72,3 +69,9 @@ Usage
 
     except Exception as ex:
         logger.exception(ex, exc_info=ex)
+
+To prune the eventlog, use the command as ``pruneeventlog``.
+For example, to keep records in the database only for the last 30 days, run::
+
+    python manage.py pruneeventlog 30
+
