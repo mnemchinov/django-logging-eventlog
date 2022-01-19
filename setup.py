@@ -14,8 +14,7 @@ def local_scheme(version):
 
 setup(
     name='django-logging-eventlog',
-    version='0.0.2',
-    use_scm_version={"local_scheme": local_scheme} if os.getenv('TestPypi') == 'yes' else False,  # using `setuptools_scm` when publish to test.pypi
+    version=__import__('eventlog').__version__,
     setup_requires=['setuptools_scm'],
     packages=['eventlog', 'eventlog.migrations'],
     include_package_data=True,
@@ -27,16 +26,15 @@ setup(
     author_email='mnemchinov@mail.ru',
     install_requires=['django>=3.0'],
     classifiers=[
-        'Environment :: Web Environment',
-        'Framework :: Django',
-	'Framework :: Django :: 3.0',	
-	'Framework :: Django :: 3.1',	
-	'Framework :: Django :: 3.2',	
-	'Framework :: Django :: 4.0',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
+        'Framework :: Django',
+        'Environment :: Web Environment',
+        'Natural Language :: Russian',
+        'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.9',
+        'Topic :: Software Development',
     ],
 )
