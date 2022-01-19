@@ -1,8 +1,6 @@
-from datetime import datetime, timedelta
-from django.utils.translation import gettext_lazy as _
-
 from django.db import models
 from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
 
 from eventlog.services import Levels
 
@@ -14,12 +12,6 @@ class EventLevels(models.IntegerChoices):
     debug = Levels.debug.value, Levels.debug.label
     error = Levels.error.value, Levels.error.label
     critical = Levels.critical.value, Levels.critical.label
-
-
-class EventLogManager(models.Manager):
-    def purge(self, days=30):
-        return self.filter(
-            timestamp__gt=datetime.now() - timedelta(days=days)).delete()
 
 
 class Event(models.Model):
@@ -34,7 +26,6 @@ class Event(models.Model):
     )
     event = models.TextField(verbose_name=_('Event'), default="")
     tracing = models.TextField(verbose_name=_('Tracing'), default="")
-    objects = EventLogManager()
 
     class Meta:
         ordering = ('-timestamp',)

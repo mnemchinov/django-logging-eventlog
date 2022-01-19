@@ -1,5 +1,6 @@
 import logging
 from collections import namedtuple
+from django.utils import timezone
 
 from django.apps import apps
 
@@ -51,10 +52,24 @@ Levels = _Levels(notset, info, warning, debug, error, critical)
 
 # endregion
 
+APP_NAME = 'eventlog'
+APP_MODEL_EVENT_NAME = 'Event'
+
 
 class EventLogHandler(logging.Handler):
+
+    @staticmethod
+    def prune(days: int):
+        event_model = apps.get_model(APP_NAME, APP_MODEL_EVENT_NAME)
+        date_time = timezone.now() - timezone.timedelta(days=days)
+        rows_to_prune = event_model.objects.filter(timestamp__lte=date_time)
+        count = rows_to_prune.count()
+        rows_to_prune.delete()
+
+        return count
+
     def emit(self, record):
-        event_model = apps.get_model('eventlog', 'Event')
+        event_model = apps.get_model(APP_NAME, APP_MODEL_EVENT_NAME)
         trace = ""
 
         if record.exc_info:
